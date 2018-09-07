@@ -1,31 +1,31 @@
 package com.pramyness.demo.handler;
 
 import com.pramyness.demo.AppTest;
+import com.pramyness.demo.handler.base.Handler;
 import org.junit.After;
 import org.junit.Test;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.RandomAccessFile;
 
 import static org.junit.Assert.*;
 
 /**
  * IntelliJ IDEA 17
- * Created by Pramy on 2018/9/6.
+ * Created by Pramy on 2018/9/7.
  */
-public class CharHandlerTest extends AppTest {
+public class WordHandlerTest extends AppTest {
 
-    private CharHandler charHandler = new CharHandler();
+    private final Handler handler = new WordHandler();
 
     @Test
     public void doHandle() throws IOException {
-        init(TEST_PATH+"/handler/CharHandlerTest.java");
-        handle(charHandler);
+
+        init(TEST_PATH+"handler/WordHandlerTest.java");
+        handle(handler);
     }
 
     @After
     public void doGet() {
-        charHandler.get();
+        handler.get();
     }
 }

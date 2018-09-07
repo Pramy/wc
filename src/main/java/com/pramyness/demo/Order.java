@@ -13,7 +13,7 @@ import lombok.Setter;
 public enum Order {
 
     C("-c","字符数"),W("-w","词的数目"),L("-l","行数"),
-    S("-s","递归");
+    S("-s","递归"),A("-a","");
 
     private final String command;
 

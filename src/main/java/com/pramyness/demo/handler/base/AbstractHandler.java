@@ -1,5 +1,6 @@
-package com.pramyness.demo.handler;
+package com.pramyness.demo.handler.base;
 
+import com.pramyness.demo.handler.base.Handler;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -7,17 +8,16 @@ import lombok.Setter;
  * IntelliJ IDEA 17
  * Created by Pramy on 2018/9/6.
  */
-public abstract class AbstractHandler implements Handler{
+public abstract class AbstractHandler implements Handler {
 
-    @Getter
     @Setter
     private Handler next;
 
     @Override
-    public void handle(char[] chars , int len) {
-        doHandle(chars, len);
+    public void handle(String line) {
+        doHandle(line);
         if (next != null) {
-            next.handle(chars, len);
+            next.handle(line);
         }
     }
 
@@ -38,7 +38,7 @@ public abstract class AbstractHandler implements Handler{
     }
 
 
-    protected abstract void doHandle(char[] chars , int len);
+    protected abstract void doHandle(String line);
 
     protected abstract void doGet();
 

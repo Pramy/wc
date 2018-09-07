@@ -6,7 +6,8 @@
 
 	<groupId>com.pramyness.demo</groupId>
 	<artifactId>count</artifactId>
-	<version>1.0-SNAPSHOT</version>
+	<version>1.0</version>
+	<packaging>jar</packaging>
 
 	<name>count</name>
 	<!-- FIXME change it to the project's website -->
@@ -75,5 +76,30 @@
 				</plugin>
 			</plugins>
 		</pluginManagement>
+		<plugins>
+			<plugin>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<configuration>
+					<descriptorRefs>
+						<descriptorRef>jar-with-dependencies</descriptorRef>
+					</descriptorRefs>
+					<archive>
+						<manifest>
+							<mainClass>com.pramyness.demo.App</mainClass>
+						</manifest>
+					</archive>
+				</configuration>
+				<executions>
+					<execution>
+						<id>make-assembly</id>
+						<phase>package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
 	</build>
+
 </project>

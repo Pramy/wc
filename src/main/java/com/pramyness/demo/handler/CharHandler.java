@@ -1,6 +1,7 @@
 package com.pramyness.demo.handler;
 
 import com.pramyness.demo.Order;
+import com.pramyness.demo.handler.base.AbstractHandler;
 
 /**
  * IntelliJ IDEA 17
@@ -18,18 +19,18 @@ public class CharHandler extends AbstractHandler {
     }
 
     @Override
-    public void doHandle(char[] chars , int len) {
-        count+=len;
+    public void doHandle(String line) {
+        count += line.length() + System.lineSeparator().length();
     }
 
     @Override
     public void doGet() {
-        System.out.println("字符数目:"+count);
+        System.out.println("字符数目:" + count);
     }
 
     @Override
     protected void doClear() {
-        count=0;
+        count = 0;
     }
 
 }

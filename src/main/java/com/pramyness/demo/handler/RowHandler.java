@@ -1,6 +1,7 @@
 package com.pramyness.demo.handler;
 
 import com.pramyness.demo.Order;
+import com.pramyness.demo.handler.base.AbstractHandler;
 
 /**
  * IntelliJ IDEA 17
@@ -8,7 +9,7 @@ import com.pramyness.demo.Order;
  */
 public class RowHandler extends AbstractHandler {
 
-    private int sum =1;
+    private int sum ;
     @Override
     public Order getOrder() {
         return Order.L;
@@ -16,12 +17,8 @@ public class RowHandler extends AbstractHandler {
 
 
     @Override
-    public void doHandle(char[] chars , int len) {
-        for (int i = 0; i < len; i++) {
-            if (chars[i] == '\n') {
-                sum++;
-            }
-        }
+    public void doHandle(String line) {
+        sum++;
     }
 
     @Override
@@ -31,6 +28,6 @@ public class RowHandler extends AbstractHandler {
 
     @Override
     protected void doClear() {
-        sum=1;
+        sum=0;
     }
 }

@@ -1,6 +1,8 @@
 package com.pramyness.demo;
 
 import com.pramyness.demo.handler.*;
+import com.pramyness.demo.handler.base.AbstractHandler;
+import com.pramyness.demo.handler.base.Handler;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -24,13 +26,31 @@ public class App {
 
     static {
         MAP = new HashMap<>();
-        MAP.put(Order.L.getCommand(), new RowHandler());
-        MAP.put(Order.C.getCommand(), new CharHandler());
-        MAP.put(Order.W.getCommand(), new WordHandler());
+        File file = new File(App.class.getResource("/").getPath()+"com/pramyness/demo/handler");
+        System.out.println(file.getPath());
+        File[] files = file.listFiles();
+        if (files != null) {
+            for (File file1 : files) {
+                if (file1.isFile()) {
+                    String name = file1.getName();
+                    name = name.substring(0,name.indexOf("."));
+                    try {
+                        Object o = Class.forName("com.pramyness.demo.handler."+name).newInstance();
+                        if (o instanceof Handler) {
+                            MAP.put(((Handler) o).getOrder().getCommand(), (Handler) o);
+                        }
+                    } catch (ClassNotFoundException | IllegalAccessException | InstantiationException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }
     }
 
     public static void main(String[] args) throws IOException {
+
         File file = build(args);
+
         String name = file.getName();
         if (file.isDirectory()) {
             NAME = ".*";
@@ -38,7 +58,7 @@ public class App {
             file = file.getParentFile();
             NAME = name.replaceAll("\\.", "\\\\.").replaceAll("[*?]", ".*");
         }
-        if (file == null|| !file.exists()){
+        if (file == null || !file.exists()) {
             throw new RuntimeException("文件:不存在");
         }
         File[] files = file.listFiles();
@@ -54,11 +74,10 @@ public class App {
             System.out.println(file.getPath());
             FileReader fileReader = new FileReader(file);
             BufferedReader bf = new BufferedReader(fileReader);
-            char[] chars = new char[1024];
-            int len;
+            String s;
             if (HEAD != null) {
-                while ((len = bf.read(chars)) != -1) {
-                    HEAD.handle(chars, len);
+                while ((s = bf.readLine()) != null) {
+                    HEAD.handle(s);
                 }
                 HEAD.get();
                 HEAD.clear();
@@ -94,6 +113,6 @@ public class App {
                 }
             }
         }
-        return new File(args[args.length - 1]);
+        return args.length >= 1 ? new File(args[args.length - 1]) : new File("");
     }
 }

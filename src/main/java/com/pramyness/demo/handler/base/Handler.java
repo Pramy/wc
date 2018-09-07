@@ -1,4 +1,4 @@
-package com.pramyness.demo.handler;
+package com.pramyness.demo.handler.base;
 
 import com.pramyness.demo.Order;
 
@@ -10,7 +10,7 @@ public interface Handler {
 
     Order getOrder();
 
-    void handle(char[] chars , int len);
+    void handle(String line);
 
     void get();
 
