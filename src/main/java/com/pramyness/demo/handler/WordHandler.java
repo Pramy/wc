@@ -1,6 +1,5 @@
 package com.pramyness.demo.handler;
 
-import com.pramyness.demo.Order;
 import com.pramyness.demo.handler.base.AbstractHandler;
 import org.apache.commons.lang3.StringUtils;
 
@@ -14,13 +13,8 @@ public class WordHandler extends AbstractHandler {
 
 
     @Override
-    public Order getOrder() {
-        return Order.W;
-    }
-
-    @Override
     public void doHandle(String line) {
-        String s = line.replaceAll("[\\p{Nd}\\u9fa5-\\uffe5\\p{Punct}\\s&&[^-]]", " ");
+        String s = line.replaceAll("[\\p{Nd}\\u4e00-\\uffe5\\p{Punct}\\s]", " ");
         count += StringUtils.split(s, " ").length;
     }
 

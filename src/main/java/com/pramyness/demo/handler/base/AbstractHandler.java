@@ -1,7 +1,5 @@
 package com.pramyness.demo.handler.base;
 
-import com.pramyness.demo.handler.base.Handler;
-import lombok.Getter;
 import lombok.Setter;
 
 /**
@@ -36,7 +34,6 @@ public abstract class AbstractHandler implements Handler {
             next.clear();
         }
     }
-
 
     protected abstract void doHandle(String line);
 

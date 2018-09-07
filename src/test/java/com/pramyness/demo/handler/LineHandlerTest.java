@@ -5,23 +5,20 @@ import com.pramyness.demo.handler.base.Handler;
 import org.junit.After;
 import org.junit.Test;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
-
-import static org.junit.Assert.*;
 
 /**
  * IntelliJ IDEA 17
  * Created by Pramy on 2018/9/7.
  */
-public class RowHandlerTest extends AppTest {
+public class LineHandlerTest extends AppTest {
 
-    private Handler handler = new RowHandler();
+    private Handler handler = new LineHandler();
 
     @Test
     public void doHandle() throws IOException {
 
-        init(TEST_PATH+"handler/RowHandlerTest.java");
+        init(TEST_PATH+"handler/LineHandlerTest.java");
         handle(handler);
     }
 

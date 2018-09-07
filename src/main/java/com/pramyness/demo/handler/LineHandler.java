@@ -1,19 +1,14 @@
 package com.pramyness.demo.handler;
 
-import com.pramyness.demo.Order;
 import com.pramyness.demo.handler.base.AbstractHandler;
 
 /**
  * IntelliJ IDEA 17
  * Created by Pramy on 2018/9/6.
  */
-public class RowHandler extends AbstractHandler {
+public class LineHandler extends AbstractHandler {
 
     private int sum ;
-    @Override
-    public Order getOrder() {
-        return Order.L;
-    }
 
 
     @Override

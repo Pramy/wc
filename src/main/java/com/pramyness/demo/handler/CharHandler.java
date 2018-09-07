@@ -1,6 +1,5 @@
 package com.pramyness.demo.handler;
 
-import com.pramyness.demo.Order;
 import com.pramyness.demo.handler.base.AbstractHandler;
 
 /**
@@ -12,11 +11,6 @@ public class CharHandler extends AbstractHandler {
 
     private long count = 0;
 
-
-    @Override
-    public Order getOrder() {
-        return Order.C;
-    }
 
     @Override
     public void doHandle(String line) {

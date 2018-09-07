@@ -8,8 +8,6 @@ import com.pramyness.demo.Order;
  */
 public interface Handler {
 
-    Order getOrder();
-
     void handle(String line);
 
     void get();
