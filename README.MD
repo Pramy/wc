@@ -262,6 +262,24 @@ java -jar count-1.0-jar-with-dependencies.jar  -w -c -l -a -s d://123.txt
 
 ![2](images/2.jpg)
 
+##代码覆盖率
+
+进行代码覆盖率测试
+
+运行命令(统计d盘下面所有的txt文件)
+
+```java
+ -w -c -l -a -s d://*.txt
+```
+
+结果：
+
+![4](images/4.jpg)
+
+![5](images/5.jpg)
+
+整体代码覆盖率是92%
+
 ## PSP
 
 
